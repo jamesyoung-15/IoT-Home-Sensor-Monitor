@@ -1,5 +1,5 @@
 # IoT-Home-Sensor-Monitor
-A full-stack project that stores and displays air quality sensor data. Air quality data is retrieved via sensors with an ESP32, sent to AWS through an HTTP REST API, stored in DynamoDB, and accessible via the REST API. The front-end displays the retrieved data with vanilla HTML, CSS, and Javascript for simplicity. The website is hosted on my home server (see [here]() to check out my home lab and see how I expose my home server).
+A full-stack project that stores and displays air quality sensor data. Air quality data is retrieved via sensors with an ESP32, sent to AWS through API Gateway, stored in DynamoDB, and accessible via the API. The front-end displays data using ReactJS.
 
 Demo Website: Todo
 

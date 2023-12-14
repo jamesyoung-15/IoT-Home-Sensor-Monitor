@@ -28,6 +28,10 @@ Hardware:
 The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is accessible publicly through an S3 Bucket. See diagram below for reference.
 
 ## Project Setup
+
+### Hardware Overview
+![](./media/hardware.jpg)
+
 ### Hardware Components
 | Component Name | Function | Notes |
 |-------------|-------------|----|
@@ -56,7 +60,8 @@ The air quality data is retrieved via sensors with an ESP32. The ESP32 module se
 
 #### Front End
 - Stack: HTML, CSS, Javascript
-- Libraries: ChartJS
+- Libraries: [ChartJS](https://www.chartjs.org/)
+- Color Scheme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 
 ## Resources

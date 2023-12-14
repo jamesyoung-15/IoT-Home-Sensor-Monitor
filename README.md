@@ -1,7 +1,7 @@
 # IoT-Home-Sensor-Monitor
 A full-stack project that stores and displays air quality sensor data from my home. 
 
-Demo Website: Todo
+Demo Website: https://cloud.digitalocean.com/apps/64bed653-536f-4b65-a427-04cb30490de4/settings?i=2c3a19
 
 API: https://8cdgfq0r3c.execute-api.us-east-1.amazonaws.com/prod/sensor-data
 
@@ -25,7 +25,7 @@ Hardware:
 
 ![](./media/iot-fullstack-diagram.png)
 
-The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is accessible publicly through an S3 Bucket. See diagram below for reference.
+The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is hosted on DigitalOcean.
 
 ## Project Setup
 
@@ -56,13 +56,15 @@ The air quality data is retrieved via sensors with an ESP32. The ESP32 module se
 - Libraries: See `platform.ini` file
 
 #### AWS
-- Platforms: Lambda (Node JS v20), DynamoDB, API Gateway, S3 Bucket.
+- Platforms: Lambda (Node JS v20), DynamoDB, API Gateway.
 
 #### Front End
 - Stack: HTML, CSS, Javascript
 - Libraries: [ChartJS](https://www.chartjs.org/)
 - Color Scheme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
+#### Website Hosting
+- Platform: DigitalOcean
 
 ## Resources
 [Scan/Query Table](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_dynamodb_code_examples.html)

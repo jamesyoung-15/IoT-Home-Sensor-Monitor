@@ -5,10 +5,10 @@ Demo Website: Todo
 
 API: https://8cdgfq0r3c.execute-api.us-east-1.amazonaws.com/prod/sensor-data
 
+## Preview
+![](./media/dashboardPreview.png)
 
 ## Overview
-The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is accessible publicly through an S3 Bucket. See diagram below for reference.
-
 Software:
 - Front-end: HTML, CSS, Javascript
 - Backend: DynamoDB
@@ -21,10 +21,11 @@ Hardware:
 
 
 
-## Project Architecture Diagram
+## Project Architecture
 
 ![](./media/iot-fullstack-diagram.png)
 
+The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is accessible publicly through an S3 Bucket. See diagram below for reference.
 
 ## Project Setup
 ### Hardware Components

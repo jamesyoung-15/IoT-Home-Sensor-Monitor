@@ -66,3 +66,10 @@ The air quality data is retrieved via sensors with an ESP32. The ESP32 module se
 
 ## Resources
 [Scan/Query Table](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_dynamodb_code_examples.html)
+[Enable CORS for REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html)
+
+## Notes to Self
+- Use query instead of scan if possible for efficiency
+- Enable lambda proxy integration for API Gateway to pass event
+- Add `Access-Control-Allow-Origin: '*'` to response headers in Lambda to bypass CORS error (useful when doing local development)
+- For AWS SDK V3 NodeJS be wary of outdated guides

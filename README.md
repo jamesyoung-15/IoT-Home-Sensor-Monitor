@@ -1,7 +1,7 @@
 # IoT-Home-Sensor-Monitor
 A full-stack project that stores and displays air quality sensor data from my home. 
 
-Demo Website: https://cloud.digitalocean.com/apps/64bed653-536f-4b65-a427-04cb30490de4/settings?i=2c3a19
+Demo Website: https://seashell-app-fl8mz.ondigitalocean.app/
 
 API: https://8cdgfq0r3c.execute-api.us-east-1.amazonaws.com/prod/sensor-data
 

@@ -25,7 +25,18 @@ Hardware:
 
 ![](./media/iot-fullstack-diagram.png)
 
-The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is hosted on my home server (see [here](https://github.com/jamesyoung-15/homeserver/) for info on my home server) and tunneled to a VPS for public access and SSL certificate.
+
+<details>
+
+<summary>See Detailed Explanation</summary>
+
+### Detailed Explanation
+
+The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. 
+
+The website is hosted on my home server (see [here](https://github.com/jamesyoung-15/homeserver/) for info on my home server). The website is publically accessible without port forwarding by tunneling to a public facing VPS through Wireguard and requests are routed using Nginx as a reverse-proxy (on both the VPS and home network).
+
+</details>
 
 ## Project Setup
 

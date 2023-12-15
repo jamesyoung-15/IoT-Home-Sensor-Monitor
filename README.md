@@ -1,7 +1,7 @@
 # IoT-Home-Sensor-Monitor
 A full-stack project that stores and displays air quality sensor data from my home. 
 
-Demo Website: https://seashell-app-fl8mz.ondigitalocean.app/
+Demo Website: https://airqualitydashboard.jyylab.com
 
 API: https://8cdgfq0r3c.execute-api.us-east-1.amazonaws.com/prod/sensor-data
 
@@ -25,7 +25,7 @@ Hardware:
 
 ![](./media/iot-fullstack-diagram.png)
 
-The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is hosted on DigitalOcean.
+The air quality data is retrieved via sensors with an ESP32. The ESP32 module sends the data to AWS through API Gateway and stores it in DynamoDB through a Lambda function. The data on DynamoDB can be obtained via the API URI. The front-end dashboard displays data using the API with vanilla HTML, CSS, Javascript. The website is hosted on my home server (see [here](https://github.com/jamesyoung-15/homeserver/) for info on my home server) and tunneled to a VPS for public access and SSL certificate.
 
 ## Project Setup
 
@@ -64,7 +64,8 @@ The air quality data is retrieved via sensors with an ESP32. The ESP32 module se
 - Color Scheme: [Catppuccin](https://github.com/catppuccin/catppuccin)
 
 #### Website Hosting
-- Platform: DigitalOcean
+- Platform: Proxmox Debian VM (Home Server)
+- Tunnel: Wireguard to VPS
 
 ## Resources
 [Scan/Query Table](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/javascript_dynamodb_code_examples.html)

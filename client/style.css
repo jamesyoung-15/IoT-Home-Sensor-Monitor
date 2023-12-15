@@ -1,5 +1,10 @@
 @import url("catppuccin.css");
 
+:root{
+    --button-color: #6d4aff;
+    --button-hover: #7c5cff;
+}
+
 *,
 *::before,
 *::after {

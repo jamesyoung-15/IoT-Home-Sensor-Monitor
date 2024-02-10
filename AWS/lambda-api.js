@@ -12,7 +12,8 @@ export const handler = async (event, context) => {
     let body;
     let statusCode = 200;
     const headers = {
-    "Content-Type": "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
     };
     // console.log(event);
     // let response;
@@ -115,11 +116,12 @@ async function insertData(requestBody){
             Temperature: requestBody.Temperature,
             Humidity: requestBody.Humidity,
             TVOC: requestBody.TVOC,
-            eCO2: requestBody.eCO2
+            eCO2: requestBody.eCO2,
+            ExpireAt: getTTL().toString()
         },
     })
     const response = await docClient.send(command);
-    console.log(response);
+    // console.log(response);
     return response;
 }
 
@@ -162,3 +164,13 @@ let getFormattedTime = () => {
     return formattedTime;
 }
 
+// compute ttl
+let getTTL = () => {
+    // Get the current time in epoch second format
+    // const currentTime = Math.floor(new Date().getTime() / 1000);
+
+    // Calculate the expireAt time (7 days from now) in epoch second format
+    const expireAt = Math.floor((new Date().getTime() + 7 * 24 * 60 * 60 * 1000) / 1000);
+    
+    return expireAt;
+}

@@ -70,5 +70,5 @@ let sendData = () => {
 // check data
 // console.log(jsonData);
 
-setInterval(sendData, 10*6000); // send data every 10 minutes
+setInterval(sendData, 10*60000); // send data every 10 minutes
 // sendData();

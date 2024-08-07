@@ -20,27 +20,27 @@ export const handler = async (event, context) => {
     try{
         switch(true){
             // DELETE: delete single data
-            case event.httpMethod == 'GET' && event.path == "/sensor-data/{location}/{id}":
+            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data/{location}/{id}":
                 body = await getSingleData(event.queryStringParameters.location, event.queryStringParameters.id);
                 body = `Deleted data with ID: ${event.queryStringParameters.id}$`
                 break;
             // GET: retrieve all data
-            case event.httpMethod == 'GET' && event.path == "/sensor-data":
+            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data":
                 body = await getAllData();
                 body = body.Items;
                 break;
             // GET: retrieve all data from a specified location (filters data)
-            case event.httpMethod == 'GET' && event.path == "/sensor-data/{location}":
+            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data/{location}":
                 body = await getLocationData(event.queryStringParameters.location);
                 body = body.Items;
                 break;
             // PUT: create entry to db
-            case event.httpMethod == 'PUT' && event.path == "/sensor-data":
+            case event.requestContext.http.method == 'PUT' && event.path == "/sensor-data":
                 let requestJSON = JSON.parse(event.body);
                 await insertData(requestJSON);
                 body = `Put ${requestJSON}$`;
                 break;
-            case event.httpMethod == 'DELETE' && event.path == event.path == "/sensor-data/{location}/{id}":
+            case event.requestContext.http.method == 'DELETE' && event.path == event.path == "/sensor-data/{location}/{id}":
                 body = await deleteData(event.queryStringParameters.id);
                 break;
             // error
@@ -145,19 +145,19 @@ let getFormattedTime = () => {
     // Create a new Date object
     const date = new Date();
   
-    // Get the UTC time offset for Hong Kong (UTC+8)
-    const hongKongOffset = 8 * 60; // in minutes
+    // Get the UTC time offset for EST (UTC-4)
+    const localTimeOffset = 4 * 60; // in minutes
   
-    // Calculate the local time in Hong Kong
-    const hongKongTime = new Date(date.getTime() + hongKongOffset * 60 * 1000);
+    // Calculate the local time in EST
+    const localTime = new Date(date.getTime() - localTimeOffset * 60 * 1000);
   
     // Extract the individual components of the time
-    const year = hongKongTime.getFullYear();
-    const month = String(hongKongTime.getMonth() + 1).padStart(2, '0');
-    const day = String(hongKongTime.getDate()).padStart(2, '0');
-    const hours = String(hongKongTime.getHours()).padStart(2, '0');
-    const minutes = String(hongKongTime.getMinutes()).padStart(2, '0');
-    const seconds = String(hongKongTime.getSeconds()).padStart(2, '0');
+    const year = localTime.getFullYear();
+    const month = String(localTime.getMonth() + 1).padStart(2, '0');
+    const day = String(localTime.getDate()).padStart(2, '0');
+    const hours = String(localTime.getHours()).padStart(2, '0');
+    const minutes = String(localTime.getMinutes()).padStart(2, '0');
+    const seconds = String(localTime.getSeconds()).padStart(2, '0');
   
     // Format the time string
     const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;

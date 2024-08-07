@@ -69,5 +69,5 @@ let sendData = () => {
     });
 };
 
-// setInterval(sendData, 10*6000); // send data every 10 minutes
+setInterval(sendData, 10*6000); // send data every 10 minutes
 // sendData();

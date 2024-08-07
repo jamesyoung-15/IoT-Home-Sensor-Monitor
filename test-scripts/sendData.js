@@ -49,8 +49,6 @@ const jsonData = {
     TVOC: getRandomArbitrary(1, 100)
 };
 
-console.log(jsonData);
-
 // send data to api
 let sendData = () => {
     fetch(apiUrl, {
@@ -68,6 +66,9 @@ let sendData = () => {
         console.error('Error:', error);
     });
 };
+
+// check data
+// console.log(jsonData);
 
 setInterval(sendData, 10*6000); // send data every 10 minutes
 // sendData();

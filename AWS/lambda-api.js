@@ -16,31 +16,32 @@ export const handler = async (event, context) => {
         "Access-Control-Allow-Origin": "*",
     };
     // console.log(event);
+    // console.log(event.routeKey);
     // let response;
     try{
         switch(true){
             // DELETE: delete single data
-            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data/{location}/{id}":
+            case event.httpMethod == 'GET' && event.path == "/sensor-data/{location}/{id}":
                 body = await getSingleData(event.queryStringParameters.location, event.queryStringParameters.id);
                 body = `Deleted data with ID: ${event.queryStringParameters.id}$`
                 break;
             // GET: retrieve all data
-            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data":
+            case event.httpMethod == 'GET' && event.path == "/sensor-data":
                 body = await getAllData();
                 body = body.Items;
                 break;
             // GET: retrieve all data from a specified location (filters data)
-            case event.requestContext.http.method == 'GET' && event.path == "/sensor-data/{location}":
+            case event.httpMethod == 'GET' && event.path == "/sensor-data/{location}":
                 body = await getLocationData(event.queryStringParameters.location);
                 body = body.Items;
                 break;
             // PUT: create entry to db
-            case event.requestContext.http.method == 'PUT' && event.path == "/sensor-data":
+            case event.httpMethod == 'PUT' && event.path == "/sensor-data":
                 let requestJSON = JSON.parse(event.body);
                 await insertData(requestJSON);
                 body = `Put ${requestJSON}$`;
                 break;
-            case event.requestContext.http.method == 'DELETE' && event.path == event.path == "/sensor-data/{location}/{id}":
+            case event.httpMethod == 'DELETE' && event.path == event.path == "/sensor-data/{location}/{id}":
                 body = await deleteData(event.queryStringParameters.id);
                 break;
             // error
@@ -117,7 +118,7 @@ async function insertData(requestBody){
             Humidity: requestBody.Humidity,
             TVOC: requestBody.TVOC,
             eCO2: requestBody.eCO2,
-            ExpireAt: getTTL().toString()
+            ExpireAt: Number(getTTL())
         },
     })
     const response = await docClient.send(command);
@@ -145,11 +146,11 @@ let getFormattedTime = () => {
     // Create a new Date object
     const date = new Date();
   
-    // Get the UTC time offset for EST (UTC-4)
-    const localTimeOffset = 4 * 60; // in minutes
+    // Get the UTC time offset for Hong Kong (UTC+8)
+    const timeOffset = -4 * 60; // in minutes
   
-    // Calculate the local time in EST
-    const localTime = new Date(date.getTime() - localTimeOffset * 60 * 1000);
+    // Calculate the local time in Hong Kong
+    const localTime = new Date(date.getTime() + timeOffset * 60 * 1000);
   
     // Extract the individual components of the time
     const year = localTime.getFullYear();
@@ -170,7 +171,7 @@ let getTTL = () => {
     // const currentTime = Math.floor(new Date().getTime() / 1000);
 
     // Calculate the expireAt time (7 days from now) in epoch second format
-    const expireAt = Math.floor((new Date().getTime() + 7 * 24 * 60 * 60 * 1000) / 1000);
+    const expireAt = (Math.floor((new Date().getTime() + 7 * 24 * 60 * 60 * 1000) / 1000)).toString();
     
     return expireAt;
 }

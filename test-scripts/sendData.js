@@ -37,7 +37,7 @@ let getFormatTime = () => {
 
 // generate random data function
 let getRandomArbitrary = (min, max) => {
-    return (Math.round(Math.random() * (max - min) + min))/10;
+    return (Math.random() * (max - min) + min).toFixed(1);
 }
 
 // generate random data
@@ -49,7 +49,7 @@ const jsonData = {
     TVOC: getRandomArbitrary(1, 100)
 };
 
-// console.log(jsonData);
+console.log(jsonData);
 
 // send data to api
 let sendData = () => {
@@ -69,5 +69,5 @@ let sendData = () => {
     });
 };
 
-setInterval(sendData, 10*6000); // send data every 10 minutes
+// setInterval(sendData, 10*6000); // send data every 10 minutes
 // sendData();

@@ -46,7 +46,7 @@ async function updateCardData(){
     const timeMeasuredElement = document.querySelector(".time-taken");
     
     let data = await getNumData(1);
-    // console.log(data);
+    console.log(data);
     temperatureElement.innerHTML = `${Math.round(data[0].Temperature *10)/10}°C`;
     humidityElement.innerHTML = `${data[0].Humidity}%`;
     tvocElement.innerHTML = `${data[0].TVOC} ppb`;

@@ -40,18 +40,21 @@ let getRandomArbitrary = (min, max) => {
     return (Math.random() * (max - min) + min).toFixed(1);
 }
 
-// generate random data
-const jsonData = { 
-    Temperature: getRandomArbitrary(21, 25), 
-    // Time: getFormatTime(),
-    Humidity: getRandomArbitrary(40, 60),
-    eCO2: getRandomArbitrary(380, 520),
-    TVOC: getRandomArbitrary(1, 100),
-    Location: "Living Room"
-};
-
 // send data to api
 let sendData = () => {
+    // generate random data
+    let jsonData = { 
+        Temperature: getRandomArbitrary(21, 25), 
+        // Time: getFormatTime(),
+        Humidity: getRandomArbitrary(40, 60),
+        eCO2: getRandomArbitrary(380, 520),
+        TVOC: getRandomArbitrary(1, 100),
+        Location: "Living Room"
+    };
+    // check data
+    // console.log(jsonData);
+
+    // Use PUT to insert data to db
     fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -68,8 +71,6 @@ let sendData = () => {
     });
 };
 
-// check data
-// console.log(jsonData);
 
 setInterval(sendData, 10*60000); // send data every 10 minutes
 // sendData();

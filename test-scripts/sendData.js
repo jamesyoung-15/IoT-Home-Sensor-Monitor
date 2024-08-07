@@ -10,7 +10,7 @@
 // aws api gateway
 const apiUrl = 'https://8cdgfq0r3c.execute-api.us-east-1.amazonaws.com/TestV01/sensor-data';
 
-// local time
+// local time (not needed, generated in lambda)
 let getFormatTime = () => {
     // Create a new Date object
     const date = new Date();
@@ -43,10 +43,11 @@ let getRandomArbitrary = (min, max) => {
 // generate random data
 const jsonData = { 
     Temperature: getRandomArbitrary(21, 25), 
-    Time: getFormatTime(),
+    // Time: getFormatTime(),
     Humidity: getRandomArbitrary(40, 60),
     eCO2: getRandomArbitrary(380, 520),
-    TVOC: getRandomArbitrary(1, 100)
+    TVOC: getRandomArbitrary(1, 100),
+    Location: "Living Room"
 };
 
 // send data to api
